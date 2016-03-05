@@ -34,12 +34,12 @@ Configure your web server to use Let's Encrypt certificates:
 ```
 # Partial Nginx example
 server {
-    listen 443 ssl default deferred;
+  listen 443 ssl default deferred;
 	server_name api.improv.ee;
     
-    ssl_certificate /etc/letsencrypt/live/api.improv.ee/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/api.improv.ee/privkey.pem;
-    ssl_trusted_certificate /etc/letsencrypt/live/api.improv.ee/chain.pem;
+  ssl_certificate /etc/letsencrypt/live/api.improv.ee/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/api.improv.ee/privkey.pem;
+  ssl_trusted_certificate /etc/letsencrypt/live/api.improv.ee/chain.pem;
 }
 ```
 

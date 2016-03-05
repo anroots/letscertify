@@ -5,6 +5,7 @@ MAINTAINER Ando Roots <ando@sqroot.eu>
 # The container is not meant to be used as an executable
 ENTRYPOINT []
 
+VOLUME /tmp/letsencrypt-web
 CMD ["/usr/bin/start-cron"]
 
 # Install cron
