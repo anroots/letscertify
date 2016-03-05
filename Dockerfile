@@ -1,16 +1,18 @@
 FROM quay.io/letsencrypt/letsencrypt
 MAINTAINER Ando Roots <ando@sqroot.eu>
 
-VOLUME /etc/letsencrypt /var/lib/letsencrypt /tmp/letsencrypt-web
-
+# Reset entrypoint to Bash
+# The container is not meant to be used as an executable
 ENTRYPOINT []
-CMD ["/usr/sbin/cron", "-f"]
 
+CMD ["/usr/bin/start-cron"]
+
+# Install cron
 RUN apt-get update && \
 	apt-get install cron && \
 	apt-get clean && \
-	rm -rf /var/lib/apt/lists/* /etc/cron* && \
-	mkdir /etc/cron.daily
+	rm -rf /var/lib/apt/lists/* /etc/cron.*/*
 
 COPY crontab /etc/
 COPY update-certs /etc/cron.daily/
+COPY start-cron /usr/bin/
