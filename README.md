@@ -46,7 +46,7 @@ server {
 Start your web server and bind volumes from `letscertify`:
 
 ```bash
-$ docker run -d --volumes-from=letscertify improv/gateway
+$ docker run -d --volumes-from=letscertify:ro improv/gateway
 ```
 
 The web server will mount `/etc/letsencrypt`, `/var/lib/letsencrypt` and `/tmp/letsencrypt-web` folders. `letscertify` will
@@ -55,7 +55,7 @@ run `letsencrypt renew` daily.
 This is designed to auto-renew certificates. You'll still have to manually request initial certificates with something like the following:
 
 ```bash
-$ docker exec letscertify letsencrypt certonly -w /tmp/letsencrypt-web/ -d api.improv.ee --agree-tos --email ando@sqroot.eu
+$ docker exec letscertify letsencrypt certonly --webroot -w /tmp/letsencrypt-web/ -d api.improv.ee --agree-tos --email ando@sqroot.eu
 ```
 
 ## License
