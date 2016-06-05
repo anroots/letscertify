@@ -8,6 +8,8 @@ ENTRYPOINT []
 VOLUME /tmp/letsencrypt-web
 CMD ["/usr/bin/start-cron"]
 
+ENV PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/certbot/venv/bin
+
 # Install cron
 RUN apt-get update && \
 	apt-get install cron && \
